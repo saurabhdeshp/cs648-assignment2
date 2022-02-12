@@ -12,30 +12,49 @@ class ProductTable extends React.Component {
 
 }
 
+const defaultState = {
+  "name": "",
+  "price": "",
+  "category": "",
+  "url": " "
+};
+
 class ProductAdd extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      "name": "",
-      "price": "",
-      "category": "",
-      "url": ""
-    };
+    this.state = defaultState;
   }
 
   onAddHandler(event) {
     event.preventDefault();
     this.props.onAdd({ ...this.state
     });
+    this.setState({ ...defaultState
+    });
   }
 
-  onChangeHandler(event) {
-    event.preventDefault();
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-    const newState = this.state;
-    newState[fieldName] = fieldValue;
-    this.setState(newState);
+  setPrice(val) {
+    this.setState({
+      price: val
+    });
+  }
+
+  setCategory(val) {
+    this.setState({
+      category: val
+    });
+  }
+
+  setUrl(val) {
+    this.setState({
+      url: val
+    });
+  }
+
+  setName(val) {
+    this.setState({
+      name: val
+    });
   }
 
   render() {
@@ -48,7 +67,10 @@ class ProductAdd extends React.Component {
       htmlFor: "category"
     }, "Category"), /*#__PURE__*/React.createElement("select", {
       name: "category",
-      onChange: this.onChangeHandler.bind(this)
+      onChange: e => {
+        this.setCategory(e.target.value);
+      },
+      value: this.state.category
     }, /*#__PURE__*/React.createElement("option", {
       value: ""
     }, "---select category---"), /*#__PURE__*/React.createElement("option", {
@@ -64,21 +86,28 @@ class ProductAdd extends React.Component {
     }, "Price Per Unit"), /*#__PURE__*/React.createElement("input", {
       name: "price",
       placeholder: "$",
-      onChange: this.onChangeHandler.bind(this)
+      onChange: e => this.setPrice(e.target.value),
+      value: this.state.price
     })), /*#__PURE__*/React.createElement("div", {
       className: "form-input"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "name"
     }, "Product Name"), /*#__PURE__*/React.createElement("input", {
       name: "name",
-      onChange: this.onChangeHandler.bind(this)
+      onChange: e => {
+        this.setName(e.target.value);
+      },
+      value: this.state.name
     })), /*#__PURE__*/React.createElement("div", {
       className: "form-input"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "url"
     }, "Image URL"), /*#__PURE__*/React.createElement("input", {
       name: "url",
-      onChange: this.onChangeHandler.bind(this)
+      onChange: e => {
+        this.setUrl(e.target.value);
+      },
+      value: this.state.url
     })), /*#__PURE__*/React.createElement("button", {
       className: "submit-btn",
       type: "submit"

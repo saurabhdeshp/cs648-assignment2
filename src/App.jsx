@@ -26,26 +26,31 @@ class ProductTable extends React.Component {
           );
     }
 }
-
+const defaultState = {"name": "","price": "","category" : "","url" : " "}
 class ProductAdd extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {"name": "","price": "","category" : "","url" : ""}
+        this.state = defaultState
     }
 
     onAddHandler(event) {
         event.preventDefault();
         this.props.onAdd({...this.state});
+        this.setState({...defaultState})
         
     }
 
-    onChangeHandler(event) {
-        event.preventDefault()
-        const fieldName  = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-        const newState = this.state
-        newState[fieldName] = fieldValue
-        this.setState(newState);
+    setPrice(val){
+        this.setState({price: val})
+    }
+    setCategory(val){
+        this.setState({category: val})
+    }
+    setUrl(val){
+        this.setState({url: val})
+    }
+    setName(val){
+        this.setState({name: val})
     }
 
     render() {
@@ -58,7 +63,7 @@ class ProductAdd extends React.Component {
                         <label htmlFor="category">
                             Category
                         </label>
-                        <select name="category" onChange={this.onChangeHandler.bind(this)}>
+                        <select name="category" onChange={(e)=>{this.setCategory(e.target.value)}} value={this.state.category}>
                             <option value=""    >---select category---</option>
                             <option value="shirt">shirt</option>
                             <option value="jeans">jeans</option>
@@ -69,19 +74,19 @@ class ProductAdd extends React.Component {
                         <label htmlFor="price">
                             Price Per Unit
                         </label>
-                        <input name="price" placeholder="$" onChange={this.onChangeHandler.bind(this)}></input>
+                        <input name="price" placeholder="$" onChange={(e)=>this.setPrice(e.target.value)} value={this.state.price}></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="name">
                             Product Name
                         </label>
-                        <input name="name" onChange={this.onChangeHandler.bind(this)}></input>
+                        <input name="name" onChange={(e)=>{this.setName(e.target.value)}} value={this.state.name}></input>
                     </div>
                     <div className="form-input">
                         <label htmlFor="url">
                             Image URL
                         </label>
-                        <input name="url" onChange={this.onChangeHandler.bind(this)}></input>
+                        <input name="url" onChange={(e)=>{this.setUrl(e.target.value)}} value={this.state.url}></input>
                     </div>
                         <button className="submit-btn" type='submit'>Add Product</button>
                 </form>
