@@ -14,9 +14,9 @@ class ProductTable extends React.Component {
 
 const defaultState = {
   "name": "",
-  "price": "",
+  "price": "$",
   "category": "",
-  "url": " "
+  "url": ""
 };
 
 class ProductAdd extends React.Component {
@@ -27,6 +27,7 @@ class ProductAdd extends React.Component {
 
   onAddHandler(event) {
     event.preventDefault();
+    this.state.price = this.state.price.slice(1, this.state.price.length);
     this.props.onAdd({ ...this.state
     });
     this.setState({ ...defaultState
