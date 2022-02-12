@@ -40,13 +40,14 @@ class ProductAdd extends React.Component {
 
   render() {
     return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, " Add a new product to Inventory"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("form", {
-      onSubmit: event => this.onAddHandler(event)
-    }, /*#__PURE__*/React.createElement("table", {
-      className: "unbordered-table"
-    }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Category"), /*#__PURE__*/React.createElement("th", null, "Price Per Unit")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("select", {
-      className: "dropdown",
+      onSubmit: event => this.onAddHandler(event),
+      className: "product-form"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "form-input"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "category"
+    }, "Category"), /*#__PURE__*/React.createElement("select", {
       name: "category",
-      id: "category",
       onChange: this.onChangeHandler.bind(this)
     }, /*#__PURE__*/React.createElement("option", {
       value: ""
@@ -56,17 +57,32 @@ class ProductAdd extends React.Component {
       value: "jeans"
     }, "jeans"), /*#__PURE__*/React.createElement("option", {
       value: "jacket"
-    }, "jacket"))), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("input", {
+    }, "jacket"))), /*#__PURE__*/React.createElement("div", {
+      className: "form-input"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "price"
+    }, "Price Per Unit"), /*#__PURE__*/React.createElement("input", {
       name: "price",
       placeholder: "$",
       onChange: this.onChangeHandler.bind(this)
-    }))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Product Name"), /*#__PURE__*/React.createElement("th", null, "Image URL")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "form-input"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "name"
+    }, "Product Name"), /*#__PURE__*/React.createElement("input", {
       name: "name",
       onChange: this.onChangeHandler.bind(this)
-    })), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "form-input"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "url"
+    }, "Image URL"), /*#__PURE__*/React.createElement("input", {
       name: "url",
       onChange: this.onChangeHandler.bind(this)
-    }))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("button", null, "Add Product")))))));
+    })), /*#__PURE__*/React.createElement("button", {
+      className: "submit-btn",
+      type: "submit"
+    }, "Add Product")));
   }
 
 }
@@ -101,8 +117,13 @@ class ProductList extends React.Component {
 
 }
 
-const App = () => /*#__PURE__*/React.createElement("div", {
-  className: "rootCont"
-}, /*#__PURE__*/React.createElement("h2", null, "Company Inventory"), /*#__PURE__*/React.createElement("h3", null, "Showing all available products"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ProductList, null));
+class App extends React.Component {
+  render() {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "rootCont"
+    }, /*#__PURE__*/React.createElement("h2", null, "Company Inventory"), /*#__PURE__*/React.createElement("h3", null, "Showing all available products"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ProductList, null));
+  }
+
+}
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('root'));

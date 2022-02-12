@@ -53,43 +53,37 @@ class ProductAdd extends React.Component {
             <div>
                 <h3> Add a new product to Inventory</h3>
                 <hr></hr>
-                <form onSubmit={(event)=>this.onAddHandler(event)}>
-                <table className="unbordered-table">
-                    <tbody >
-                        <tr>
-                            <th>Category</th>
-                            <th>Price Per Unit</th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <select className="dropdown" name="category" id="category" onChange={this.onChangeHandler.bind(this)}>
-                                    <option value="">---select category---</option>
-                                    <option value="shirt">shirt</option>
-                                    <option value="jeans">jeans</option>
-                                    <option value="jacket">jacket</option>
-                                </select>
-                            </th>
-                            <th>
-                                <input name="price" placeholder="$" onChange={this.onChangeHandler.bind(this)}></input>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Image URL</th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input name="name" onChange={this.onChangeHandler.bind(this)}></input>
-                            </th>
-                            <th>
-                                <input name="url" onChange={this.onChangeHandler.bind(this)}></input>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th><button>Add Product</button></th>
-                        </tr>
-                    </tbody>
-                </table>
+                <form onSubmit={(event)=>this.onAddHandler(event)} className="product-form">
+                    <div className="form-input">
+                        <label htmlFor="category">
+                            Category
+                        </label>
+                        <select name="category" onChange={this.onChangeHandler.bind(this)}>
+                            <option value=""    >---select category---</option>
+                            <option value="shirt">shirt</option>
+                            <option value="jeans">jeans</option>
+                            <option value="jacket">jacket</option>
+                        </select>
+                    </div>
+                    <div className="form-input">
+                        <label htmlFor="price">
+                            Price Per Unit
+                        </label>
+                        <input name="price" placeholder="$" onChange={this.onChangeHandler.bind(this)}></input>
+                    </div>
+                    <div className="form-input">
+                        <label htmlFor="name">
+                            Product Name
+                        </label>
+                        <input name="name" onChange={this.onChangeHandler.bind(this)}></input>
+                    </div>
+                    <div className="form-input">
+                        <label htmlFor="url">
+                            Image URL
+                        </label>
+                        <input name="url" onChange={this.onChangeHandler.bind(this)}></input>
+                    </div>
+                        <button className="submit-btn" type='submit'>Add Product</button>
                 </form>
             </div>
         )
@@ -125,13 +119,15 @@ class ProductList extends React.Component {
     }
 }
 
-const App = () =>(
-    <div className="rootCont">
-        <h2>Company Inventory</h2>
-        <h3>Showing all available products</h3>
-        <hr></hr>
-        <ProductList />
-    </div>
-)
+class App extends React.Component{
+    render() {
+        return <div className="rootCont">
+            <h2>Company Inventory</h2>
+            <h3>Showing all available products</h3>
+            <hr></hr>
+            <ProductList />
+        </div>
+    }
+}
 
 ReactDOM.render(<App/>, document.getElementById('root'))

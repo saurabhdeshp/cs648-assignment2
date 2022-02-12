@@ -1,7 +1,10 @@
 body{
     padding: 0 20px;
-    background-color: rgb(37, 37, 37);
-    color: ghostwhite;
+
+    max-width: 60%;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
 }
 
 table.bordered-table th, td {
@@ -14,11 +17,35 @@ table.bordered-table {
 }
 
 
-table.unbordered-table th, table.unbordered-table td {
+/* table.unbordered-table th, table.unbordered-table td {
     padding: 10px;
     text-align: center;
 }
 
 .dropdown {
     width: 150px;
+} */
+
+.product-form{
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-input {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 10px;
+}
+.product-form label{
+    margin-bottom: 10px;
+}
+.product-form select,
+.product-form input{
+    width: 300px;
+}
+
+.submit-btn {
+    margin-top: 10px;
 }
